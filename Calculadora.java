@@ -9,6 +9,11 @@ import org.eclipse.swt.widgets.Text;
 import javax.swing.JOptionPane;
 //import org.w3c.dom.Text;
 
+/**
+ * Calculadora simula el funcionamiento de una calculadora con sus funciones habituales
+ * @author jvf350
+ * @version 1.0
+ */
 public class Calculadora {
 
     // Constantes
@@ -26,6 +31,11 @@ public class Calculadora {
 
     private static Text texto_resultado;
 
+    /**
+     * Constructor de la clase Calculadora
+     * @param gui si es true dibuja calculadora
+     *
+     */
     public Calculadora(boolean gui) {
 
         //Inicialización de las variables.
@@ -34,6 +44,10 @@ public class Calculadora {
         if (gui==true) dibujaCalculadora();
 
     }
+
+    /**
+     * Dibuja la calculadora en la pantalla
+     */
 
     private void dibujaCalculadora() {
 
@@ -229,6 +243,9 @@ public class Calculadora {
         }
     }
 
+    /**
+     * Inicializa los campos de la calculadora
+     */
     public void inicializa() {
         operacion = "null";
         valor1 = 0;
@@ -237,19 +254,36 @@ public class Calculadora {
         inicializa_resultado = true;
     }
 
+    /**
+     *
+     * genera el resultado
+     * @return String con el texto del resultado
+     */
     public String getResultadoString (){
         return texto_resultado.getText();
     }
 
+    /**
+     * establece el resultado como texto
+     * @param s texto del resultado
+     */
     public void setResultadoString(String s){
         texto_resultado.setText(s);
     }
 
+    /**
+     * obtiene el resultado como entero
+     * @return resultado como entero
+     */
     public int getResultadoInt() {
         String resultado = texto_resultado.getText();
         return Integer.parseInt(resultado);
     }
 
+    /**
+     * añade digito nuevo
+     * @param digito como entero
+     */
     public void anadeNuevoDigito(int digito){
         if (inicializa_resultado)
             setResultadoString("");
@@ -268,6 +302,10 @@ public class Calculadora {
         inicializa_resultado = false;
     }
 
+    /**
+     * Ejecuta la operacion en curso y añada una nueva
+     * @param new_operacion nueva operacion
+     */
     public void ejecutarOperador(String new_operacion) {
 
         int resultado;
@@ -290,6 +328,9 @@ public class Calculadora {
         operacion = new_operacion;
     }
 
+    /**
+     * simula la tecla igual
+     */
     public void ejecutarIgual(){
         int resultado = 0;
 
@@ -300,6 +341,10 @@ public class Calculadora {
         operacion = "null";
     }
 
+    /**
+     * ejecuta la operacion
+     * @return resultado de la operacion como entero
+     */
     public int ejecutarOperacion() {
         int resultado = 0;
 
@@ -330,6 +375,10 @@ public class Calculadora {
         return resultado;
     }
 
+    /**
+     * Establece el resultado
+     * @param resultado numero como resultado
+     */
     public void muestraResultado(int resultado){
         setResultadoString(Integer.toString(resultado));
         valor1 = resultado;
